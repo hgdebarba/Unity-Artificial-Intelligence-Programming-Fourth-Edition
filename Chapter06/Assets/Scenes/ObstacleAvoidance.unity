@@ -332,7 +332,6 @@ GameObject:
   m_Component:
   - component: {fileID: 623725326}
   - component: {fileID: 623725327}
-  - component: {fileID: 623725329}
   - component: {fileID: 623725330}
   - component: {fileID: 623725328}
   m_Layer: 0
@@ -397,13 +396,6 @@ Camera:
   m_StereoSeparation: 0.022
 --- !u!81 &623725328
 AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 623725325}
-  m_Enabled: 1
---- !u!92 &623725329
-Behaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -661,13 +653,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 884792686}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db0984524a5bd634687a473483c80264, type: 3}
+  m_Script: {fileID: 11500000, guid: 10aa9dc6b9785594e9bd5ebe651ea7e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 20
   mass: 5
-  force: 40
-  minimumDistToAvoid: 5
+  force: 50
+  minimumDistToAvoid: 20
 --- !u!1 &959647159
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +791,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 64a20aa016d92de46b7c4832ced9c1de, type: 2}
+  - {fileID: 2100000, guid: ef910cb512b07934ab7ecc31f0c320a3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
