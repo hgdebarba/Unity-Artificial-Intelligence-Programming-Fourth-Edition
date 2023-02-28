@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Mat_Spark
-  m_Shader: {fileID: 4800000, guid: 10ed1a0400b434befb56f6cfd5bedbbe, type: 3}
+  m_Shader: {fileID: 203, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: eefe18ee750c846c1a89e8e762f3f09d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2391d95355db8cb43a62c6e97e6bac19, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:

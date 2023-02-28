@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1002 &100001
 EditorExtensionImpl:
   serializedVersion: 6
@@ -180,7 +180,7 @@ EllipsoidParticleEmitter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   serializedVersion: 2
-  m_Enabled: 1
+  m_Enabled: 0
   m_Emit: 1
   minSize: 2
   maxSize: 3
@@ -4856,7 +4856,7 @@ ParticleSystemRenderer:
   m_ReflectionProbeUsage: 0
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: de3527ac8d2577a4d80493ed9f695f27, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0

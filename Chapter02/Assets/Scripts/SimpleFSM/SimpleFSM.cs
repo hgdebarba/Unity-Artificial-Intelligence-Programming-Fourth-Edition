@@ -78,9 +78,13 @@ public class SimpleFSM : FSM
         //Update the time
         elapsedTime += Time.deltaTime;
 
+        // - henrique: not a good place to make a state transition, from a software architecture perspective
         //Go to dead state is no health left
-        if (health <= 0)
+        if (health <= 0) 
+        {
+            print("Switch to Dead state");
             curState = FSMState.Dead;
+        }
     }
 
     /// <summary>
@@ -98,12 +102,14 @@ public class SimpleFSM : FSM
         //When the distance is near, transition to chase state
         else if (Vector3.Distance(transform.position, playerTransform.position) <= 300.0f)
         {
-            print("Switch to Chase Position");
+            print("Switch to Chase state");
             curState = FSMState.Chase;
         }
 
         //Rotate to the target point
-        Quaternion targetRotation = Quaternion.LookRotation(destPos - transform.position);
+        // - henrique: preventing tank from taking weird rotations
+        Vector3 dir = destPos - transform.position; dir.y = 0;
+        Quaternion targetRotation = Quaternion.LookRotation(dir);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * curRotSpeed);  
 
         //Go Forward
@@ -123,11 +129,13 @@ public class SimpleFSM : FSM
         float dist = Vector3.Distance(transform.position, playerTransform.position);
         if (dist <= 200.0f)
         {
+            print("Switch to Attack state");
             curState = FSMState.Attack;
         }
         //Go back to patrol is it become too far
         else if (dist >= 300.0f)
         {
+            print("Switch to Patrol state");
             curState = FSMState.Patrol;
         }
 
@@ -148,22 +156,28 @@ public class SimpleFSM : FSM
         if (dist >= 200.0f && dist < 300.0f)
         {
             //Rotate to the target point
-            Quaternion targetRotation = Quaternion.LookRotation(destPos - transform.position);
+            // - henrique: preventing tank from taking weird rotations
+            Vector3 dir = destPos - transform.position; dir.y = 0;
+            Quaternion targetRotation = Quaternion.LookRotation(dir);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * curRotSpeed);  
 
             //Go Forward
             transform.Translate(Vector3.forward * Time.deltaTime * curSpeed);
 
-            curState = FSMState.Attack;
+            // - Henrique: this is redundant, commented out
+            // curState = FSMState.Attack; 
         }
         //Transition to patrol is the tank become too far
         else if (dist >= 300.0f)
         {
+            print("Switch to Patrol state");
             curState = FSMState.Patrol;
-        }        
+        }
 
         //Always Turn the turret towards the player
-        Quaternion turretRotation = Quaternion.LookRotation(destPos - turret.position);
+        // - henrique: preventing turret from taking weird rotations
+        Vector3 turredDir = destPos - turret.position; turredDir.y = 0;
+        Quaternion turretRotation = Quaternion.LookRotation(turredDir);
         turret.rotation = Quaternion.Slerp(turret.rotation, turretRotation, Time.deltaTime * curRotSpeed); 
 
         //Shoot the bullets
@@ -202,6 +216,7 @@ public class SimpleFSM : FSM
     /// <param name="collision"></param>
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("BULLETHIT!!!");
         //Reduce health
         if(collision.gameObject.tag == "Bullet")
             health -= collision.gameObject.GetComponent<Bullet>().damage;

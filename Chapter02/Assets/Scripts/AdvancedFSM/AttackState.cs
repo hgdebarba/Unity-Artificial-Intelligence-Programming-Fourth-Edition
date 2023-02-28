@@ -21,7 +21,9 @@ public class AttackState : FSMState
         if (dist >= 200.0f && dist < 300.0f)
         {
             //Rotate to the target point
-            Quaternion targetRotation = Quaternion.LookRotation(destPos - npc.position);
+            // - henrique: preventing tank from taking weird rotations
+            Vector3 dir = destPos - npc.position; dir.y = 0;
+            Quaternion targetRotation = Quaternion.LookRotation(dir);
             npc.rotation = Quaternion.Slerp(npc.rotation, targetRotation, Time.deltaTime * curRotSpeed);
 
             //Go Forward
@@ -45,7 +47,9 @@ public class AttackState : FSMState
 
         //Always Turn the turret towards the player
         Transform turret = npc.GetComponent<NPCTankController>().turret;
-        Quaternion turretRotation = Quaternion.LookRotation(destPos - turret.position);
+        // - henrique: preventing tank from taking weird rotations
+        Vector3 turretDir = destPos - turret.position; turretDir.y = 0;
+        Quaternion turretRotation = Quaternion.LookRotation(turretDir);
         turret.rotation = Quaternion.Slerp(turret.rotation, turretRotation, Time.deltaTime * curRotSpeed);
 
         //Shoot bullet towards the player
