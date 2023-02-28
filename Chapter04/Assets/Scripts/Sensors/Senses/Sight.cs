@@ -20,7 +20,11 @@ public class Sight : Sense
         elapsedTime += Time.deltaTime;
 
         if (elapsedTime >= detectionRate)
+        {
             DetectAspect();
+            // - henrique: added timer reset, which was missing
+            elapsedTime = 0; 
+        }
 	}
 
     //Detect perspective field of view for the AI Character
@@ -60,9 +64,9 @@ public class Sight : Sense
         Vector3 frontRayPoint = transform.position + (transform.forward * ViewDistance);
 
         //Approximate perspective visualization
-        Vector3 leftRayPoint = Quaternion.Euler(0,FieldOfView * 0.5f ,0) * frontRayPoint;
+        Vector3 leftRayPoint = Quaternion.Euler(0, FieldOfView * 0.5f ,0) * frontRayPoint;
 
-        Vector3 rightRayPoint = Quaternion.Euler(0, - FieldOfView*0.5f, 0) *  frontRayPoint;
+        Vector3 rightRayPoint = Quaternion.Euler(0, -FieldOfView * 0.5f, 0) *  frontRayPoint;
 
         Debug.DrawLine(transform.position, frontRayPoint, Color.green);
         Debug.DrawLine(transform.position, leftRayPoint, Color.green);

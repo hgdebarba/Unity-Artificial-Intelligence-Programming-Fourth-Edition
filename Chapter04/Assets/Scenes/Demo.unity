@@ -767,6 +767,7 @@ GameObject:
   - component: {fileID: 1181073512}
   - component: {fileID: 1181073513}
   - component: {fileID: 1181073515}
+  - component: {fileID: 1181073514}
   m_Layer: 0
   m_Name: Sensor
   m_TagString: Untagged
@@ -799,8 +800,22 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14.4, y: 1, z: 6.6}
+  m_Size: {x: 2, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1181073514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1181073511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0149137ab40c00344862e5d59535088f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bDebug: 1
+  aspectName: 0
+  detectionRate: 1
 --- !u!114 &1181073515
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1068,9 +1083,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1876867367}
   - component: {fileID: 1876867369}
-  - component: {fileID: 1876867370}
   - component: {fileID: 1876867368}
-  - component: {fileID: 1876867371}
+  - component: {fileID: 1876867372}
   m_Layer: 0
   m_Name: AI_Character
   m_TagString: Untagged
@@ -1137,20 +1151,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1876867366}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &1876867370
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 6500002, guid: 1b3c673ca560fea47a51a9392ade86e9,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1876867366}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1876867371
+--- !u!114 &1876867372
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1158,12 +1159,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1876867366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0149137ab40c00344862e5d59535088f, type: 3}
+  m_Script: {fileID: 11500000, guid: 512c18608b594aa439695f6ec33b3ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bDebug: 1
-  aspectName: 0
-  detectionRate: 1
 --- !u!1 &1954060881
 GameObject:
   m_ObjectHideFlags: 0
