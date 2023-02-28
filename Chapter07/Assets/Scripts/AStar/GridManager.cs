@@ -160,16 +160,16 @@ public class GridManager : MonoBehaviour
     public bool IsInBounds(Vector3 pos)
     {
         float width = numOfColumns * gridCellSize;
-        float height = numOfRows* gridCellSize;
+        float height = numOfRows * gridCellSize;
 
-        return (pos.x >= Origin.x &&  pos.x <= Origin.x + width && pos.x <= Origin.z + height && pos.z >= Origin.z);
+        return (pos.x >= Origin.x &&  pos.x <= Origin.x + width && pos.z <= Origin.z + height && pos.z >= Origin.z);
     }
 		
 
     /// <summary>
     /// Get the neighour nodes in 4 different directions
     /// </summary>
-    public void GetNeighbours(Node node, ArrayList neighbors)
+    public void GetNeighbours(Node node, ref ArrayList neighbors)
     {
         Vector3 neighborPos = node.position;
         int neighborIndex = GetGridIndex(neighborPos);
@@ -180,22 +180,22 @@ public class GridManager : MonoBehaviour
         //Bottom
         int leftNodeRow = row - 1;
         int leftNodeColumn = column;
-        AssignNeighbour(leftNodeRow, leftNodeColumn, neighbors);
+        AssignNeighbour(leftNodeRow, leftNodeColumn, ref neighbors);
 
         //Top
         leftNodeRow = row + 1;
         leftNodeColumn = column;
-        AssignNeighbour(leftNodeRow, leftNodeColumn, neighbors);
+        AssignNeighbour(leftNodeRow, leftNodeColumn, ref neighbors);
 
         //Right
         leftNodeRow = row;
         leftNodeColumn = column + 1;
-        AssignNeighbour(leftNodeRow, leftNodeColumn, neighbors);
+        AssignNeighbour(leftNodeRow, leftNodeColumn, ref neighbors);
 
         //Left
         leftNodeRow = row;
         leftNodeColumn = column - 1;
-        AssignNeighbour(leftNodeRow, leftNodeColumn, neighbors);
+        AssignNeighbour(leftNodeRow, leftNodeColumn, ref neighbors);
     }
 	
 	/// <summary>
@@ -210,7 +210,7 @@ public class GridManager : MonoBehaviour
 	/// <param name='neighbors'>
 	/// Neighbors.
 	/// </param>
-    void AssignNeighbour(int row, int column, ArrayList neighbors)
+    void AssignNeighbour(int row, int column, ref ArrayList neighbors)
     {
         if (row != -1 && column != -1 && row < numOfRows && column < numOfColumns)
         {
@@ -245,7 +245,7 @@ public class GridManager : MonoBehaviour
             {
                 foreach (GameObject data in obstacleList)
                 {
-                    Gizmos.DrawCube(GetGridCellCenter(GetGridIndex(data.transform.position)), cellSize);
+                    Gizmos.DrawWireCube(GetGridCellCenter(GetGridIndex(data.transform.position)), cellSize);
                 }
             }
         }

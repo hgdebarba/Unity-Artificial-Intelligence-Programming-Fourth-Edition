@@ -59,7 +59,7 @@ public class AStar
             }
 			
             ArrayList neighbours = new ArrayList();
-            GridManager.instance.GetNeighbours(node, neighbours);
+            GridManager.instance.GetNeighbours(node, ref neighbours);
 
             #region CheckNeighbours
 

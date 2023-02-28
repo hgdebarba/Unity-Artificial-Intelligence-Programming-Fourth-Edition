@@ -9,7 +9,7 @@ public class TestCode : MonoBehaviour
 
     public ArrayList pathArray;
 	
-    GameObject objStartCube, objEndCube;
+    public GameObject objStartCube, objEndCube;
 	
     private float elapsedTime = 0.0f;
     public float intervalTime = 1.0f; //Interval time between path finding
@@ -17,8 +17,8 @@ public class TestCode : MonoBehaviour
 	// Use this for initialization
 	void Start () 
     {
-        objStartCube = GameObject.FindGameObjectWithTag("Start");
-        objEndCube = GameObject.FindGameObjectWithTag("End");
+        if (!objStartCube) objStartCube = GameObject.FindGameObjectWithTag("Start");
+        if (!objEndCube) objEndCube = GameObject.FindGameObjectWithTag("End");
 
         //AStar Calculated Path
         pathArray = new ArrayList();
